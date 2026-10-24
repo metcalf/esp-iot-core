@@ -1,0 +1,3 @@
+# Per-project secrets and deploy target; see wifi_credentials.h.example
+include/wifi_credentials.h
+remote_spec.cfg

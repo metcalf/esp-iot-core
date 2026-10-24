@@ -21,7 +21,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_NAME="$(basename "$PWD")"
 FIRMWARE_PATH="build/${PROJECT_NAME}.bin"
 REMOTE_ROOT="/var/www/local/esp-ota"
-REMOTE_PATH="${REMOTE_ROOT}/hvac_control_${PROJECT_NAME}"
+# Firmware for a project lands in ${OTA_DIR_PREFIX}${PROJECT_NAME}; must match the
+# prefix in default_ota_url_prefix_tmpl (wifi_credentials.h).
+OTA_DIR_PREFIX="${OTA_DIR_PREFIX:-hvac_control_}"
+REMOTE_PATH="${REMOTE_ROOT}/${OTA_DIR_PREFIX}${PROJECT_NAME}"
 VERSION_PATH="${REMOTE_PATH}/latest_version"
 # This should contain a single string with an SCP target of the form user@host
 # Newlines stripped for convenience.
